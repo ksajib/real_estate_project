@@ -96,10 +96,10 @@
 
 <script>
     function postLogin(){
-
         $('#error-email').html();
         $('#error-passwrod').html();
         $('#error-mess').html('<p></p>');
+        $('#loader_img').show();
 
         $.ajaxSetup({
             headers: {
@@ -115,6 +115,7 @@
             type: 'POST',
             data: { email: email, password: password },
             success: function(data) {
+                $('#loader_img').hide();
                 if (data.status == 0) {
                     $('#error-email').html(data.text.email);
                     $('#error-password').html(data.text.password);

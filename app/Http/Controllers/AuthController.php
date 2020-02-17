@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\frontend\FrontendController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -30,6 +31,12 @@ class AuthController extends Controller
         }
 
         return $response;
+    }
+
+    public function signup(){
+        $new = new FrontendController();
+        $data = [ 'country' => $new->country() ];
+        return view('frontend.register',compact('data'));
     }
 
     public function logout() {

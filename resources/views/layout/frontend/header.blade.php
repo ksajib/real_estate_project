@@ -41,7 +41,7 @@
                 <a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-facebook">Facebook</a>
                 <a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-gplus">Google</a>
                 <div class="line"></div>
-                <h4 class="t400">Existing Account?</h4>
+                <h4 class="t400"><a href="{{ route('signup') }}">Create Account?</a></h4>
                 <div id="error-mess"></div>
                 <div id="login-form" name="login-form" class="nobottommargin">
                     @csrf
@@ -59,6 +59,7 @@
                         <a class="button button-rounded t400 nomargin login-btn" id="login-form-submit" name="login-form-submit" value="login" onclick="postLogin()">Login</a>
                         <a href="#" class="fright">Forgot Password?</a>
                     </div>
+                    <img src="{{ asset('assets/images/loader.gif')}}" id="loader_img" class="login-loader-img" style="display:none">
                 </div>
             </div>
         </div>
