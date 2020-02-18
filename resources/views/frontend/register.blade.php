@@ -14,7 +14,7 @@
         <div class="video-overlay" style="background: rgba(0,0,0,0.6);"></div>
     </div>
 </section>
-{{ dd($data['country']) }}
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -24,38 +24,71 @@
                         <div class="card nobottommargin">
                             <div class="card-body" style="padding: 40px;">
                                 <h3>Register for an Account</h3>
-                                <form id="register-form" name="register-form" class="nobottommargin" action="#" method="post">
+                                <form action="{{ route('create-account') }}" id="register-form" name="register-form" class="nobottommargin" method="post">
+                                    @csrf
+
                                     <div class="col_full">
                                         <label for="register-form-name">Name:</label>
-                                        <input type="text" id="register-form-name" name="name" value="" class="form-control" />
+                                        @if ($errors->has('name'))
+                                            <br/><span class="error">{{ $errors->first('name') }}</span>
+                                        @endif
+                                        <input type="text" id="register-form-name" name="name" value="{{ old('name') }}" class="form-control" />
                                     </div>
+
                                     <div class="col_full">
                                         <label for="register-form-email">Email:</label>
-                                        <input type="text" id="register-form-email" name="email" value="" class="form-control" />
+                                        @if ($errors->has('email'))
+                                            <br/><span class="error">{{ $errors->first('email') }}</span>
+                                        @endif
+                                        <input type="text" id="register-form-email" name="email" value="{{ old('email') }}" class="form-control" />
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-mobile">Mobile NO:</label>
-                                        <input type="text" id="register-form-mobile" name="mobile_no" value="" class="form-control" />
+                                        @if ($errors->has('mobile_no'))
+                                            <br/><span class="error">{{ $errors->first('mobile_no') }}</span>
+                                        @endif
+                                        <input type="text" id="register-form-mobile" name="mobile_no" value="{{ old('mobile_no') }}" class="form-control" />
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-address1">Address1:</label>
-                                        <input type="text" id="register-form-address1" name="address1" value="" class="form-control" />
+                                        @if ($errors->has('address1'))
+                                            <br/><span class="error">{{ $errors->first('address1') }}</span>
+                                        @endif
+                                        <input type="text" id="register-form-address1" name="address1" value="{{ old('address1') }}" class="form-control" />
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-address2">Address2:</label>
-                                        <input type="text" id="register-form-address2" name="address2" value="" class="form-control" />
+                                        <input type="text" id="register-form-address2" name="address2" value="{{ old('address2') }}" class="form-control" />
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-postcode">Postcode:</label>
-                                        <input type="text" id="register-form-postcode" name="postcode" value="" class="form-control" />
+                                        <input type="text" id="register-form-postcode" name="postcode" value="{{ old('postcode') }}" class="form-control" />
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-country">Country:</label>
-                                        <input type="text" id="register-form-country" name="country" value="" class="form-control" />
+                                        @if ($errors->has('country'))
+                                            <br/><span class="error">{{ $errors->first('country') }}</span>
+                                        @endif
+                                        <select class="form-control" id="register-form-country" name="country">
+                                            <option value="">Select Country</option>
+                                            @if(!empty($data))
+                                                @foreach($data['country'] as $key => $country)
+                                                    @if(old('country') == $key)
+                                                        <option value="{{ $key }}" selected>{{ $country['name'].' '.$country['nativetongue'] }}</option>
+                                                    @else
+                                                        <option value="{{ $key }}">{{ $country['name'].' '.$country['nativetongue'] }}</option>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                     <div class="col_full">
                                         <label for="register-form-password">Password:</label>
-                                        <input type="password" id="register-form-password" name="password" value="" class="form-control" />
+                                        @if ($errors->has('password'))
+                                            <br/><span class="error">{{ $errors->first('password') }}</span>
+                                        @endif
+                                        <input type="password" id="register-form-password" name="password" value="{{ old('postcode') }}" class="form-control" />
+
                                     </div>
 
                                     <div class="col_full nobottommargin">

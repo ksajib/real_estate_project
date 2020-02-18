@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\frontend\FrontendController;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -36,7 +37,29 @@ class AuthController extends Controller
     public function signup(){
         $new = new FrontendController();
         $data = [ 'country' => $new->country() ];
-        return view('frontend.register',compact('data'));
+        return view('frontend.register', compact('data'));
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|email|unique:rs_users,email',
+            'mobile_no' => 'required',
+            'address1' => 'required',
+            'country' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        $user = new User();
+        $user->unique_id = 0001445;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = User::getUsername($request->name);
+        $user->password = bcrypt($request->password);
+        $user->role = 1;
+        $user->save();
+
+        return $user;
     }
 
     public function logout() {

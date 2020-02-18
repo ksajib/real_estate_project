@@ -11,6 +11,7 @@
 |
 */
 Route::post('post-login','AuthController@postLogin')->name('post-login');
+Route::post('create-account','AuthController@store')->name('create-account');
 Route::get('signup', 'AuthController@signup')->name('signup');
 Route::get('logout','AuthController@logout')->name('logout');
 
