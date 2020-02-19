@@ -5,8 +5,8 @@
     <div class="container clearfix">
         <h1>Signup</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Real Estate</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Real Estate</a></li>
             <li class="breadcrumb-item active">Signup</li>
         </ol>
     </div>
@@ -24,6 +24,19 @@
                         <div class="card nobottommargin">
                             <div class="card-body" style="padding: 40px;">
                                 <h3>Register for an Account</h3>
+
+                                @if(session()->has('success'))
+                                    @if(session()->get('success')['status'] == 1)
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success')['text'] }}
+                                        </div>
+                                    @elseif(session()->get('success')['status'] == 0)
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success')['text'] }}
+                                        </div>
+                                    @endif
+                                @endif
+
                                 <form action="{{ route('create-account') }}" id="register-form" name="register-form" class="nobottommargin" method="post">
                                     @csrf
 

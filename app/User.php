@@ -47,15 +47,28 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserProfile');
     }
 
-    // public function setUserNameAttribute($value){
-    //     $this->attributes['username'] = str_random($value ['name']);
-    // }
-
     static public function getUsername($name) {
         $username  = str_replace(' ','_', $name);
         $userRows  = User::whereRaw("username REGEXP '^{$username}(-[0-9]*)?$'")->get();
-        $countUser = count($userRows) + 1;
-        return ($countUser > 1) ? "{$username}-{$countUser}" : $username;
+        $countUser = count($userRows) + date('si');
+        return (count($userRows) > 1) ? "{$username}_{$countUser}" : $username;
+    }
+
+    static public function getUniqueId() {
+        $uniqid = uniqid();
+        $userRows  = User::whereRaw("unique_id REGEXP '^{$uniqid}(-[0-9]*)?$'")->get();
+        $status = false;
+        if(count($userRows) > 0 || $status == true) :
+            $uniqid = uniqid();
+            $userRows  = User::whereRaw("unique_id REGEXP '^{$uniqid}(-[0-9]*)?$'")->get();
+            if(count($userRows) > 0 ):
+                $status == true;
+                User::getUniqueId();
+            else:
+                $status == false;
+            endif;
+        endif;
+        return $uniqid;
     }
 
 }

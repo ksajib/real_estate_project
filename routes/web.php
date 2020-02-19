@@ -27,4 +27,5 @@ Route::group([ 'namespace' => 'frontend' ], function(){
 
 Route::group(['as'=> 'admin.', 'prefix' => 'admin', 'namespace' => 'admin', 'middleware' => ['admin']], function(){
     Route::get('dashboard', 'AdminController@index')->name('dashboard');
+    Route::get('edit-profile', 'AdminController@edit_profile')->name('edit-profile');
 });

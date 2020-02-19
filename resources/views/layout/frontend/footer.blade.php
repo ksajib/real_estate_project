@@ -86,7 +86,7 @@
 <script src="{{ asset('assets/js/jquery.js') }}"></script>
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyAO2BYvn4xyrdisvP8feA4AS_PGZFxJDp4"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAO2BYvn4xyrdisvP8feA4AS_PGZFxJDp4"></script> -->
 <script src="{{ asset('assets/js/jquery.gmap.js') }}"></script>
 <script src="{{ asset('assets/js/components/bs-select.js') }}"></script>
 <script src="{{ asset('assets/js/components/bs-switches.js') }}"></script>
