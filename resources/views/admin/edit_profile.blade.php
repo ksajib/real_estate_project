@@ -7,17 +7,17 @@
             <ol class="breadcrumb">
                 <li class='active'><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             </ol>
-
-            <h1>Dashboard</h1>
-
+            <h1>Edit Profile</h1>
         </div>
 
+
+        {{ dd($data) }}
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        Dashboard
+                    Edit Profile
                     </div>
                 </div>
             </div>

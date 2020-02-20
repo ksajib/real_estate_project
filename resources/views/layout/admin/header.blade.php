@@ -66,7 +66,7 @@
         			</li>
         			<li class="userlinks">
         				<ul class="dropdown-menu">
-        					<li><a href="#">Edit Profile <i class="pull-right fa fa-pencil"></i></a></li>
+        					<li><a href="{{ route('admin.edit-profile') }}">Edit Profile <i class="pull-right fa fa-pencil"></i></a></li>
         					<li><a href="#">Change Password <i class="pull-right fa fa-cog"></i></a></li>
         					<li class="divider"></li>
         					<li><a href="{{ route('logout') }}" class="text-right">Sign Out</a></li>
